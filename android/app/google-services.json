@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "448412086169",
+    "project_id": "chatosmessenger-525c4",
+    "storage_bucket": "chatosmessenger-525c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448412086169:android:9d9bbc1c2eed7d2e62ed08",
+        "android_client_info": {
+          "package_name": "in.chatos_messenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa_0vjogT4GTzJDqg9a-RJgJ7S8C17k3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

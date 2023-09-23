@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:chatos_messenger/common/repositories/common_firebase_storage_repository.dart';
 import 'package:chatos_messenger/common/utils/utils.dart';
 import 'package:chatos_messenger/features/auth/screens/otp_screen.dart';
+import 'package:chatos_messenger/features/auth/screens/user_information_screen.dart';
 import 'package:chatos_messenger/models/user_model.dart';
 import 'package:chatos_messenger/screens/mobile_layout_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,7 +41,7 @@ class AuthRepository {
     DefaultCacheManager().emptyCache();
   }
 
- void signInWithPhone(BuildContext context, String phoneNumber) async {
+  void signInWithPhone(BuildContext context, String phoneNumber) async {
     try {
       await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -63,6 +64,7 @@ class AuthRepository {
       showSnackBar(context: context, content: e.message!);
     }
   }
+
   void verifyOTP({
     required BuildContext context,
     required String verificationId,
@@ -74,8 +76,13 @@ class AuthRepository {
         smsCode: userOTP,
       );
       await auth.signInWithCredential(credential);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        UserInformationScreen.routeName,
+        (route) => false,
+      );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context:context,content: e.message!);
+      showSnackBar(context: context, content: e.message!);
     }
   }
 

@@ -21,10 +21,12 @@ class OTPScreen extends ConsumerStatefulWidget {
 }
 
 class _OTPScreenState extends ConsumerState<OTPScreen> {
-  void verifyOTP(BuildContext context, String userOTP) {
-    ref
-        .read(authControllerProvider)
-        .verifyOTP(context, widget.verificationId, userOTP);
+  void verifyOTP(WidgetRef ref, BuildContext context, String userOTP) {
+    ref.read(authControllerProvider).verifyOTP(
+          context,
+          widget.verificationId,
+          userOTP,
+        );
   }
 
   @override
@@ -73,7 +75,7 @@ class _OTPScreenState extends ConsumerState<OTPScreen> {
   Widget build(
     BuildContext context,
   ) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text('OTP Verification'),
@@ -101,9 +103,7 @@ class _OTPScreenState extends ConsumerState<OTPScreen> {
                 keyboardType: TextInputType.number,
                 onSubmit: (val) {
                   if (val.length == 6) {
-                    verifyOTP(context, val.trim());
-                    Navigator.pushReplacementNamed(
-                        context, '/user-information');
+                    verifyOTP(ref, context, val.trim());
                   }
                 },
               ),

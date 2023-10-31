@@ -77,17 +77,17 @@ class AboutPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Image.asset(
-                          'images/facebook.png',
+                          'assets/images/facebook.png',
                           height: 40,
                           width: 40,
                         ),
                         Image.asset(
-                          'images/google.png',
+                          'assets/images/google.png',
                           height: 40,
                           width: 40,
                         ),
                         Image.asset(
-                          'images/twitter.png',
+                          'assets/images/twitter.png',
                           height: 40,
                           width: 40,
                         ),

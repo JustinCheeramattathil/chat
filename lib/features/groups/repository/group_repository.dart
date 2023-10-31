@@ -82,7 +82,7 @@ class GroupRepository {
       BuildContext context, String groupId, List<String> newMemberUid) async {
     try {
       var userCollection = await firestore.collection('users').get();
-      bool isFound = false;
+       bool isFound = false;
 
       for (var document in userCollection.docs) {
         var userData = UserModel.fromMap(document.data());

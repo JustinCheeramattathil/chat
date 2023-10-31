@@ -1,6 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:chatos_messenger/features/chat/widgets/video_player.dart';
+// import 'package:chatos_messenger/features/chat/widgets/video_player.dart';
 import 'package:flutter/material.dart';
 
 
@@ -52,10 +52,10 @@ class DisplayTextImageGIF extends StatelessWidget {
                   ),
                 );
               })
-            : type == MessageEnum.video
-                ? VideoPlayer(
-                    videoUrl: message,
-                  )
+            // : type == MessageEnum.video
+            //     ? VideoPlayer(
+            //         videoUrl: message,
+            //       )
                 : type == MessageEnum.gif
                     ? CachedNetworkImage(
                         imageUrl: message,

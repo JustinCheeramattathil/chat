@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:chatos_messenger/common/widgets/error.dart';
 import 'package:chatos_messenger/common/widgets/loader.dart';
 import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
@@ -36,12 +35,11 @@ class _MyAppState extends ConsumerState<MyApp> {
     var connectivityResult = await Connectivity().checkConnectivity();
 
     if (connectivityResult == ConnectivityResult.none) {
-      // Navigate to the error screen
+      // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => const ErrorPage()),
       );
     } else {
-      // Navigate to the home screen or other appropriate screen
       ref.watch(userDataAuthProvider).when(
             data: (user) {
               if (user == null) {
@@ -80,7 +78,7 @@ class _MyAppState extends ConsumerState<MyApp> {
       onGenerateRoute: ((settings) => generateRoute(settings)),
       home: Builder(
         builder: (context) {
-          checkAndNavigate(context); 
+          checkAndNavigate(context);
           return const Scaffold(
             body: Center(child: CircularProgressIndicator()),
           );
@@ -89,5 +87,3 @@ class _MyAppState extends ConsumerState<MyApp> {
     );
   }
 }
-
-

@@ -58,6 +58,7 @@ class _SelectContactsGroupState extends ConsumerState<SelectContactsGroup> {
   @override
   void initState() {
     super.initState();
+
     fetchregisteredPhoneNumbers();
   }
 
@@ -79,6 +80,7 @@ class _SelectContactsGroupState extends ConsumerState<SelectContactsGroup> {
     return ref.watch(getContactsProvider).when(
         data: (contactList) {
           final filteredContacts = filterContacts(contactList);
+          log(filteredContacts.toString());
           return Expanded(
             child: ListView.builder(
                 itemCount: filteredContacts.length,

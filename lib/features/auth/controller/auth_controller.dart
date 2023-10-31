@@ -27,9 +27,9 @@ class AuthController {
     return user;
   }
 
-  void deleteUser(BuildContext context) async {
-    authRepository.deleteAppDir();
-  }
+  // void deleteUser(BuildContext context) async {
+  //   authRepository.deleteAppDir();
+  // }
 
   void signInWithPhone(BuildContext context, String phoneNumber) {
     authRepository.signInWithPhone(context, phoneNumber);

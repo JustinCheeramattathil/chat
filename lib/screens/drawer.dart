@@ -11,7 +11,6 @@ import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
 import 'package:chatos_messenger/features/groups/screens/create_group_screen.dart';
 import 'package:chatos_messenger/features/splash/screens/landing_screen.dart';
 import 'package:chatos_messenger/models/user_model.dart';
-import 'package:share_plus/share_plus.dart';
 
 class DrawerPage extends ConsumerWidget {
   @override
@@ -51,7 +50,7 @@ class DrawerPage extends ConsumerWidget {
                       child: CircleAvatar(
                         backgroundColor: Colors.grey,
                         backgroundImage: NetworkImage(userData!.profilePic),
-                        radius: 45,
+                        radius: 40,
                       ),
                     ),
                     const SizedBox(
@@ -111,7 +110,7 @@ class DrawerPage extends ConsumerWidget {
                 ),
                 title: const Text('Share'),
                 onTap: () {
-                  Share.share("asdfghjklsdfghjkl;xcvbnm,.xcvbnm,./");
+                  //  Share.share("asdfghjklsdfghjkl;xcvbnm,.xcvbnm,./");
                 },
               ),
               ListTile(
@@ -159,9 +158,9 @@ class DrawerPage extends ConsumerWidget {
                             child: const Text('Yes'),
                             onPressed: () async {
                               FirebaseAuth.instance.signOut();
-                              ref
-                                  .read(authControllerProvider)
-                                  .deleteUser(context);
+                              // ref
+                              //     .read(authControllerProvider)
+                              //     .deleteUser(context);
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(

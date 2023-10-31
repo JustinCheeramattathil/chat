@@ -1,4 +1,6 @@
+import 'dart:developer';
 import 'dart:io';
+
 import 'package:chatos_messenger/common/repositories/common_firebase_storage_repository.dart';
 import 'package:chatos_messenger/common/utils/utils.dart';
 import 'package:chatos_messenger/features/auth/screens/otp_screen.dart';
@@ -42,6 +44,8 @@ class AuthRepository {
   }
 
   void signInWithPhone(BuildContext context, String phoneNumber) async {
+    log(phoneNumber.toString());
+
     try {
       await auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
@@ -49,6 +53,8 @@ class AuthRepository {
           await auth.signInWithCredential(credential);
         },
         verificationFailed: (e) {
+          log(e.toString());
+
           throw Exception(e.message);
         },
         codeSent: ((String verificationId, int? resendToken) async {

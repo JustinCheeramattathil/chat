@@ -58,7 +58,7 @@ class ChatRepository {
     });
   }
 
-  Stream<List<GroupModel>> getChatGroups() {
+  Stream<List<GroupModel>>getChatGroups() {
     return firestore.collection('groups').snapshots().map((event) {
       List<GroupModel> groups = [];
       for (var document in event.docs) {
@@ -71,7 +71,7 @@ class ChatRepository {
     });
   }
 
-  Future<GroupModel> fetchGroupData(String groupId) async {
+  Future<GroupModel>fetchGroupData(String groupId) async {
     try {
       final DocumentSnapshot groupDoc =
           await firestore.collection('groups').doc(groupId).get();

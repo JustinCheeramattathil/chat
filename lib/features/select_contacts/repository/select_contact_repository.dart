@@ -1,4 +1,3 @@
-
 import 'package:chatos_messenger/common/utils/utils.dart';
 import 'package:chatos_messenger/models/user_model.dart';
 import 'package:chatos_messenger/features/chat/screens/mobile_chat_screen.dart';
@@ -6,6 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../screens/widget/custom_snackbar.dart';
 
 final selectContactsRepositoryProvider = Provider(
   (ref) => SelectContactRepository(
@@ -58,9 +59,14 @@ class SelectContactRepository {
       }
 
       if (!isFound) {
-        showSnackBar(
-          context: context,
-          content: 'This number does not exist on this app.',
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: CustomSnackBar(errorText: 'unknown user'),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            duration: Duration(milliseconds: 150),
+          ),
         );
       }
     } catch (e) {

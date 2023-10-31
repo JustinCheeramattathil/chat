@@ -266,7 +266,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
             ),
           ],
         ),
-        isShownEmojiContainer
+       isShownEmojiContainer
             ? SizedBox(
                 height: 310,
                 child: EmojiPicker(
@@ -275,6 +275,12 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                       _messageController.text =
                           _messageController.text + emoji.emoji;
                     });
+
+                    if (!isShowSendbutton) {
+                      setState(() {
+                        isShowSendbutton = true;
+                      });
+                    }
                   }),
                 ),
               )

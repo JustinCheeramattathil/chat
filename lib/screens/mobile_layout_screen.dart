@@ -2,7 +2,6 @@ import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
 import 'package:chatos_messenger/features/groups/screens/create_group_screen.dart';
 import 'package:chatos_messenger/features/select_contacts/screens/select_contacts_screen.dart';
 import 'package:chatos_messenger/screens/drawer.dart';
-import 'package:chatos_messenger/screens/widget/success_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:chatos_messenger/colors.dart';
 import 'package:chatos_messenger/features/chat/widgets/contacts_list.dart';
@@ -24,11 +23,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
     super.initState();
     tabBarController = TabController(length: 2, vsync: this);
     WidgetsBinding.instance.addObserver(this);
-    showSuccessSnackBar();
-  }
-
-  void showSuccessSnackBar() {
-    const SuccessSnackBar(errorText: 'Account Created Successfully');
+  
   }
 
   @override

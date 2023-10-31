@@ -11,6 +11,7 @@ import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
 import 'package:chatos_messenger/features/groups/screens/create_group_screen.dart';
 import 'package:chatos_messenger/features/splash/screens/landing_screen.dart';
 import 'package:chatos_messenger/models/user_model.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DrawerPage extends ConsumerWidget {
   @override
@@ -110,7 +111,7 @@ class DrawerPage extends ConsumerWidget {
                 ),
                 title: const Text('Share'),
                 onTap: () {
-                  //  Share.share("asdfghjklsdfghjkl;xcvbnm,.xcvbnm,./");
+                  Share.share("asdfghjklsdfghjkl;xcvbnm,.xcvbnm,./");
                 },
               ),
               ListTile(

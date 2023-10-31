@@ -38,7 +38,6 @@ class _SelectContactsGroupState extends ConsumerState<SelectContactsGroup> {
         .toList();
     setState(() {
       registeredPhoneNumbers = phoneNumbers;
-      log(registeredPhoneNumbers.toString());
     });
   }
 

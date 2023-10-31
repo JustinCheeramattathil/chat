@@ -13,6 +13,7 @@ import 'package:chatos_messenger/common/utils/utils.dart';
 import 'package:chatos_messenger/models/group.dart';
 
 import '../../../models/user_model.dart';
+import '../../../screens/widget/success_snackbar.dart';
 
 final groupRepositoryProvider = Provider(
   (ref) => GroupRepository(
@@ -67,7 +68,15 @@ class GroupRepository {
       );
       await firestore.collection('groups').doc(groupId).set(group.toMap());
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+      // showSnackBar(context:context,content: e.toString());
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: SuccessSnackBar(errorText: 'group created successfully'),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+      );
     }
   }
 
@@ -78,15 +87,16 @@ class GroupRepository {
           ),
         );
   }
+
   Future<void> addMemberToGroup(
       BuildContext context, String groupId, List<String> newMemberUid) async {
     try {
       var userCollection = await firestore.collection('users').get();
-       bool isFound = false;
+      bool isFound = false;
 
       for (var document in userCollection.docs) {
         var userData = UserModel.fromMap(document.data());
-        
+
         for (int i = 0; i < newMemberUid.length; i++) {
           String selectedPhoneNum = newMemberUid[i];
           if (selectedPhoneNum == userData.phoneNumber) {
@@ -118,19 +128,18 @@ class GroupRepository {
                 throw 'Group not found.';
               }
             } catch (e) {
-                showSnackBar(context:context,content: e.toString());
-
+              showSnackBar(context: context, content: e.toString());
             }
           } else {
-            showSnackBar(context: context,
-             
+            showSnackBar(
+              context: context,
               content: 'This number does not exist on this app.',
             );
           }
         }
       }
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+      showSnackBar(context: context, content: e.toString());
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:chatos_messenger/features/auth/repository/auth_repository.dart';
 import 'package:chatos_messenger/models/user_model.dart';
+import 'package:chatos_messenger/screens/widget/success_snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,9 +52,8 @@ class AuthController {
       ref: ref,
       context: context,
     );
+   
   }
-
-
 
   void updateUserDataToFirebase(
       BuildContext context, String name, File? profilePic) {

@@ -13,6 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../screens/widget/custom_snackbar.dart';
+import '../../../screens/widget/success_snackbar.dart';
+
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
     auth: FirebaseAuth.instance,
@@ -88,7 +91,14 @@ class AuthRepository {
         (route) => false,
       );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context: context, content: e.message!);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: CustomSnackBar(errorText: 'Invalid OTP'),
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
+      );
     }
   }
 
@@ -110,6 +120,14 @@ class AuthRepository {
               'profilePic/$uid',
               profilePic,
             );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: SuccessSnackBar(errorText: 'Account created successfully'),
+            behavior: SnackBarBehavior.floating,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+          ),
+        );
       }
 
       var user = UserModel(

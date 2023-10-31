@@ -70,13 +70,16 @@ class MyMessageCard extends ConsumerWidget {
                       TextButton(
                         child: const Text('Yes'),
                         onPressed: () {
+                          
                           ref
                               .read(chatRepositoryProvider)
                               .deleteMessageFromMessageSubcollection(
                                   receiverUserId: receiverId,
                                   messageId: messageId,
                                   isGroupChat: isGroupchat);
+                                  
                           Navigator.of(context).pop();
+                          
                         },
                       ),
                     ],

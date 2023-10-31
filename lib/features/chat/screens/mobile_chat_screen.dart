@@ -6,7 +6,7 @@ import 'package:chatos_messenger/common/widgets/loader.dart';
 import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
 import 'package:chatos_messenger/features/call/controller/call_controller.dart';
 import 'package:chatos_messenger/features/call/screens/call_pick_up_screen.dart';
-import 'package:chatos_messenger/features/chat/widgets/bottom_chat_screen.dart';
+import 'package:chatos_messenger/features/chat/widgets/bottom_chat_field.dart';
 import 'package:chatos_messenger/features/chat/widgets/chat_list.dart';
 import 'package:chatos_messenger/features/groups/controller/group_controller.dart';
 import 'package:chatos_messenger/features/groups/screens/add_new_member.dart';
@@ -100,14 +100,14 @@ class MobileChatScreen extends ConsumerWidget {
                             ),
                           ],
                         ),
-                        IconButton(
-                          onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AddNewMember(uid),
-                            ));
-                          },
-                          icon: const Icon(Icons.person_add),
-                        ),
+                        // IconButton(
+                        //   onPressed: () {
+                        //     Navigator.of(context).push(MaterialPageRoute(
+                        //       builder: (context) => AddNewMember(uid),
+                        //     ));
+                        //   },
+                        //   icon: const Icon(Icons.person_add),
+                        // ),
                       ],
                     );
                   },

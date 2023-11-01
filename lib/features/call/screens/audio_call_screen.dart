@@ -45,33 +45,15 @@ class _AudioCallScreenState extends ConsumerState<AudioCallScreen> {
     );
 
     initAgora();
-    startCallTimer();
   }
 
   void initAgora() async {
     await client!.initialize();
     client!.engine.enableLocalVideo(false);
-
-    // client!.engine.onJoinChannelSuccess = () {
-    //   setState(() {
-    //     isCallConnected = true;
-    //   });
-    // };
-  }
-
-  void startCallTimer() {
-    if (isCallConnected) {
-      callTimer = Timer.periodic(Duration(seconds: 1), (timer) {
-        setState(() {
-          secondsElapsed++;
-        });
-      });
-    }
   }
 
   @override
   void dispose() {
-    callTimer.cancel();
     super.dispose();
   }
 
@@ -85,22 +67,14 @@ class _AudioCallScreenState extends ConsumerState<AudioCallScreen> {
                 alignment: Alignment.bottomCenter,
                 children: [
                   AgoraVideoViewer(client: client!),
-                  Center(
+                  const Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.mic,
                           size: 100,
                           color: Colors.grey,
-                        ),
-                        Positioned(
-                          top: 20,
-                          right: 20,
-                          child: Text(
-                            'Call Time: ${_formatDuration(secondsElapsed)}',
-                            style: const TextStyle(fontSize: 16),
-                          ),
                         ),
                       ],
                     ),
@@ -127,11 +101,5 @@ class _AudioCallScreenState extends ConsumerState<AudioCallScreen> {
               ),
             ),
     );
-  }
-
-  String _formatDuration(int seconds) {
-    final minutes = seconds ~/ 60;
-    final remainingSeconds = seconds % 60;
-    return '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
   }
 }

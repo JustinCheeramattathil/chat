@@ -220,13 +220,6 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                             color: Colors.white,
                           ),
                         ),
-                        IconButton(
-                          onPressed: selectVideo,
-                          icon: const Icon(
-                            Icons.attach_file,
-                            color: Colors.white,
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -266,7 +259,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
             ),
           ],
         ),
-       isShownEmojiContainer
+        isShownEmojiContainer
             ? SizedBox(
                 height: 310,
                 child: EmojiPicker(

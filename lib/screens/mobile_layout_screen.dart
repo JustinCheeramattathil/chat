@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
+import 'package:chatos_messenger/features/chat/widgets/contact_list_group.dart';
 import 'package:chatos_messenger/features/groups/screens/create_group_screen.dart';
 import 'package:chatos_messenger/features/select_contacts/screens/select_contacts_screen.dart';
 import 'package:chatos_messenger/screens/drawer.dart';
@@ -6,6 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:chatos_messenger/colors.dart';
 import 'package:chatos_messenger/features/chat/widgets/contacts_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../common/utils/utils.dart';
+import '../features/status/screens/confirm_status_screen.dart';
+import '../features/status/screens/status_contacts_screen.dart';
 
 class MobileLayoutScreen extends ConsumerStatefulWidget {
   const MobileLayoutScreen({Key? key}) : super(key: key);
@@ -23,7 +28,6 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
     super.initState();
     tabBarController = TabController(length: 2, vsync: this);
     WidgetsBinding.instance.addObserver(this);
-  
   }
 
   @override
@@ -78,12 +82,60 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
                 icon: const Icon(Icons.group_add)),
           ),
         ],
+        bottom: TabBar(
+          controller: tabBarController,
+          indicatorColor: Colors.amber,
+          indicatorWeight: 4,
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.grey,
+          labelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+          tabs: const [
+            Tab(
+              text: 'CHATS',
+            ),
+            Tab(
+              text: 'GROUPS',
+            ),
+            // Tab(
+            //   text: 'STATUS',
+            // ),
+          ],
+        ),
       ),
       drawer: DrawerPage(),
-      body: const ContactsList(),
+      body: TabBarView(
+        controller: tabBarController,
+        children: const [
+          ContactsList(),
+          ContactsListGroup(),
+          // StatusContactsScreen(),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          Navigator.pushNamed(context, SelectContactsScreen.routeName);
+          if (tabBarController.index == 0) {
+            Navigator.pushNamed(context, SelectContactsScreen.routeName);
+          } else if (tabBarController.index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CreateGroup(),
+              ),
+            );
+          }
+          //  else
+          //   {
+          //   File? pickedImage = await pickImageFromGallery(context);
+          //   if (pickedImage != null) {
+          //     Navigator.pushNamed(
+          //       context,
+          //       ConfirmStatusScreen.routeName,
+          //       arguments: pickedImage,
+          //     );
+          //   }
+          // }
         },
         backgroundColor: Colors.amber,
         child: const Icon(

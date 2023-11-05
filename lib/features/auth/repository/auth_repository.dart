@@ -70,7 +70,7 @@ class AuthRepository {
         codeAutoRetrievalTimeout: (String verificationId) {},
       );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context: context, content: e.message!);
+      // showSnackBar(context: context, content: e.message!);
     }
   }
 

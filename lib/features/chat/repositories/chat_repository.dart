@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:chatos_messenger/common/enums/message_enum.dart';
 import 'package:chatos_messenger/common/providers/message_reply_provider.dart';
 import 'package:chatos_messenger/common/repositories/common_firebase_storage_repository.dart';
-import 'package:chatos_messenger/common/utils/utils.dart';
 import 'package:chatos_messenger/models/chat_contact.dart';
 import 'package:chatos_messenger/models/group.dart';
 import 'package:chatos_messenger/models/message.dart';
@@ -276,7 +275,7 @@ class ChatRepository {
         isGroupChat: isGroupChat,
       );
     } catch (e) {
-      showSnackBar(context: context, content: e.toString());
+      // showSnackBar(context: context, content: e.toString());
     }
   }
 
@@ -345,7 +344,7 @@ class ChatRepository {
         isGroupChat: isGroupChat,
       );
     } catch (e) {
-      showSnackBar(context: context, content: e.toString());
+      // showSnackBar(context: context, content: e.toString());
     }
   }
 
@@ -389,7 +388,7 @@ class ChatRepository {
         isGroupChat: isGroupChat,
       );
     } catch (e) {
-      showSnackBar(context: context, content: e.toString());
+      // showSnackBar(context: context, content: e.toString());
     }
   }
 
@@ -417,7 +416,7 @@ class ChatRepository {
           .doc(messageId)
           .update({'isSeen': true});
     } catch (e) {
-      showSnackBar(context: context, content: e.toString());
+      // showSnackBar(context: context, content: e.toString());
     }
   }
 

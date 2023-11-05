@@ -128,18 +128,18 @@ class GroupRepository {
                 throw 'Group not found.';
               }
             } catch (e) {
-              showSnackBar(context: context, content: e.toString());
+              // showSnackBar(context: context, content: e.toString());
             }
           } else {
-            showSnackBar(
-              context: context,
-              content: 'This number does not exist on this app.',
-            );
+            // showSnackBar(
+            //   context: context,
+            //   content: 'This number does not exist on this app.',
+            // );
           }
         }
       }
     } catch (e) {
-      showSnackBar(context: context, content: e.toString());
+      // showSnackBar(context: context, content: e.toString());
     }
   }
 }

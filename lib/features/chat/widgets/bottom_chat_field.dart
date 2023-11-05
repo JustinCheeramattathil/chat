@@ -15,8 +15,11 @@ import 'package:permission_handler/permission_handler.dart';
 class BottomChatField extends ConsumerStatefulWidget {
   final String receiverUserId;
   final bool isGroupChat;
-  const BottomChatField(
-      {super.key, required this.receiverUserId, required this.isGroupChat});
+  const BottomChatField({
+    super.key,
+    required this.receiverUserId,
+    required this.isGroupChat,
+  });
 
   @override
   ConsumerState<BottomChatField> createState() => _BottomChatFieldState();
@@ -48,35 +51,45 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   }
 
   void sendTextMessage() async {
-    if (isShowSendbutton) {
-      ref.read(chatControllerProvider).sendTextMessage(
-            context,
-            _messageController.text.trim(),
-            widget.receiverUserId,
-            widget.isGroupChat,
-          );
+    // if (isShowSendbutton) {
+    //   ref.read(chatControllerProvider).sendTextMessage(
+    //         context,
+    //         _messageController.text.trim(),
+    //         widget.receiverUserId,
+    //         widget.isGroupChat,
+    //       );
 
-      setState(() {
-        _messageController.text = '';
-      });
-    } else {
-      var tempDir = await getTemporaryDirectory();
-      var path = '${tempDir.path}/flutter_sound.aac';
-      if (!isRecorderInit) {
-        return;
-      }
-      if (isRecording) {
-        await _soundRecorder!.stopRecorder();
-        sendFileMessage(File(path), MessageEnum.audio);
-      } else {
-        await _soundRecorder!.startRecorder(
-          toFile: path,
+    //   setState(() {
+    //     _messageController.text = '';
+    //   });
+    // } else {
+    //   var tempDir = await getTemporaryDirectory();
+    //   var path = '${tempDir.path}/flutter_sound.aac';
+    //   if (!isRecorderInit) {
+    //     return;
+    //   }
+    //   if (isRecording) {
+    //     await _soundRecorder!.stopRecorder();
+    //     sendFileMessage(File(path), MessageEnum.audio);
+    //   } else {
+    //     await _soundRecorder!.startRecorder(
+    //       toFile: path,
+    //     );
+    //   }
+    //   setState(() {
+    //     isRecording = !isRecording;
+    //   });
+    // }
+    ref.read(chatControllerProvider).sendTextMessage(
+          context,
+          _messageController.text.trim(),
+          widget.receiverUserId,
+          widget.isGroupChat,
         );
-      }
-      setState(() {
-        isRecording = !isRecording;
-      });
-    }
+
+    setState(() {
+      _messageController.text = '';
+    });
   }
 
   void sendFileMessage(
@@ -220,6 +233,13 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                             color: Colors.white,
                           ),
                         ),
+                        IconButton(
+                          onPressed: selectVideo,
+                          icon: const Icon(
+                            Icons.attach_file,
+                            color: Colors.grey,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -236,7 +256,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                 bottom: 8,
                 right: 2,
                 left: 2,
@@ -246,11 +266,13 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                 radius: 25,
                 child: GestureDetector(
                   child: Icon(
-                    isShowSendbutton
-                        ? Icons.send
-                        : isRecording
-                            ? Icons.close
-                            : Icons.mic,
+                    // isShowSendbutton
+                    //     ? Icons.send
+                    //     : isRecording
+                    //         ? Icons.close
+                    //         : Icons.mic,
+                    // color: Colors.white,
+                    Icons.send,
                     color: Colors.white,
                   ),
                   onTap: sendTextMessage,

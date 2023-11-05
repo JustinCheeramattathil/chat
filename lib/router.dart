@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chatos_messenger/features/groups/screens/create_group_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:chatos_messenger/common/widgets/error.dart';
@@ -6,6 +8,10 @@ import 'package:chatos_messenger/features/auth/screens/otp_screen.dart';
 import 'package:chatos_messenger/features/auth/screens/user_information_screen.dart';
 import 'package:chatos_messenger/features/select_contacts/screens/select_contacts_screen.dart';
 import 'package:chatos_messenger/features/chat/screens/mobile_chat_screen.dart';
+
+import 'features/status/screens/confirm_status_screen.dart';
+import 'features/status/screens/status_screen.dart';
+import 'models/status_model.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -43,6 +49,20 @@ Route<dynamic> generateRoute(RouteSettings settings) {
           uid: uid,
           isGroupChat: isGroupChat!,
           profilePic: profilePic,
+        ),
+      );
+    case ConfirmStatusScreen.routeName:
+      final file = settings.arguments as File;
+      return MaterialPageRoute(
+        builder: (context) => ConfirmStatusScreen(
+          file: file,
+        ),
+      );
+    case StatusScreen.routeName:
+      final status = settings.arguments as Status;
+      return MaterialPageRoute(
+        builder: (context) => StatusScreen(
+          status: status,
         ),
       );
 

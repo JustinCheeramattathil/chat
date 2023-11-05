@@ -1,8 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:swipe_to/swipe_to.dart';
-
 import 'package:chatos_messenger/colors.dart';
 import 'package:chatos_messenger/common/enums/message_enum.dart';
 import 'package:chatos_messenger/features/chat/repositories/chat_repository.dart';

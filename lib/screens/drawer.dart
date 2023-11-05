@@ -111,7 +111,7 @@ class DrawerPage extends ConsumerWidget {
                 ),
                 title: const Text('Share'),
                 onTap: () {
-                  Share.share("asdfghjklsdfghjkl;xcvbnm,.xcvbnm,./");
+                  Share.share("https://www.amazon.com/gp/product/B0CM9CCB3G");
                 },
               ),
               ListTile(

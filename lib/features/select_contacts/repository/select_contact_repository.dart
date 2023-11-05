@@ -70,7 +70,7 @@ class SelectContactRepository {
         );
       }
     } catch (e) {
-      showSnackBar(context: context, content: e.toString());
+      // showSnackBar(context: context, content: e.toString());
     }
   }
 }

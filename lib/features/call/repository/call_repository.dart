@@ -53,7 +53,7 @@ class CallRepository {
         ),
       );
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+    // showSnackBar(context:context,content: e.toString());
     }
   }
 
@@ -83,7 +83,7 @@ class CallRepository {
         ),
       );
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+    // showSnackBar(context:context,content: e.toString());
     }
   }
 
@@ -124,7 +124,7 @@ class CallRepository {
         ),
       );
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+    // showSnackBar(context:context,content: e.toString());
     }
   }
 
@@ -137,7 +137,7 @@ class CallRepository {
       await firestore.collection('call').doc(callerId).delete();
       await firestore.collection('call').doc(receiverId).delete();
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+    // showSnackBar(context:context,content: e.toString());
     }
   }
 
@@ -150,7 +150,7 @@ class CallRepository {
       await firestore.collection('call').doc(callerId).delete();
       await firestore.collection('call').doc(receiverId).delete();
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+    // showSnackBar(context:context,content: e.toString());
     }
   }
 
@@ -168,7 +168,7 @@ class CallRepository {
         await firestore.collection('call').doc(id).delete();
       }
     } catch (e) {
-    showSnackBar(context:context,content: e.toString());
+    // showSnackBar(context:context,content: e.toString());
     }
   }
 }

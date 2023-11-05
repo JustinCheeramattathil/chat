@@ -8,8 +8,8 @@ import 'package:chatos_messenger/features/chat/screens/mobile_chat_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class ContactsList extends ConsumerWidget {
-  const ContactsList({Key? key}) : super(key: key);
+class ContactsListGroup extends ConsumerWidget {
+  const ContactsListGroup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,8 +18,8 @@ class ContactsList extends ConsumerWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            StreamBuilder<List<ChatContact>>(
-              stream: ref.watch(chatControllerProvider).chatContacts(),
+            StreamBuilder<List<GroupModel>>(
+              stream: ref.watch(chatControllerProvider).chatGroups(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const LoaderWidget();
@@ -28,7 +28,7 @@ class ContactsList extends ConsumerWidget {
                   shrinkWrap: true,
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
-                    var chatContactsData = snapshot.data![index];
+                    var groupData = snapshot.data![index];
                     return Column(
                       children: [
                         InkWell(
@@ -37,10 +37,10 @@ class ContactsList extends ConsumerWidget {
                               context,
                               MobileChatScreen.routeName,
                               arguments: {
-                                'name': chatContactsData.name,
-                                'uid': chatContactsData.contactId,
-                                'isGroupChat': false,
-                                'profilePic': chatContactsData.profiilePic,
+                                'name': groupData.name,
+                                'uid': groupData.groupId,
+                                'isGroupChat': true,
+                                'profilePic': groupData.groupPic
                               },
                             );
                           },
@@ -48,7 +48,7 @@ class ContactsList extends ConsumerWidget {
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: ListTile(
                               title: Text(
-                                chatContactsData.name,
+                                groupData.name,
                                 style: const TextStyle(
                                   fontSize: 18,
                                 ),
@@ -56,18 +56,17 @@ class ContactsList extends ConsumerWidget {
                               subtitle: Padding(
                                 padding: const EdgeInsets.only(top: 6.0),
                                 child: Text(
-                                  chatContactsData.lastMessage,
+                                  groupData.lastMessage,
                                   style: const TextStyle(fontSize: 15),
                                 ),
                               ),
                               leading: CircleAvatar(
                                 backgroundImage:
-                                    NetworkImage(chatContactsData.profiilePic),
+                                    NetworkImage(groupData.groupPic),
                                 radius: 30,
                               ),
                               trailing: Text(
-                                DateFormat.Hm()
-                                    .format(chatContactsData.timeSent),
+                                DateFormat.Hm().format(groupData.timesent),
                                 style: const TextStyle(
                                   color: Colors.grey,
                                   fontSize: 13,

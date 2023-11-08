@@ -9,7 +9,6 @@ import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_sound/flutter_sound.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class BottomChatField extends ConsumerStatefulWidget {
@@ -51,35 +50,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   }
 
   void sendTextMessage() async {
-    // if (isShowSendbutton) {
-    //   ref.read(chatControllerProvider).sendTextMessage(
-    //         context,
-    //         _messageController.text.trim(),
-    //         widget.receiverUserId,
-    //         widget.isGroupChat,
-    //       );
 
-    //   setState(() {
-    //     _messageController.text = '';
-    //   });
-    // } else {
-    //   var tempDir = await getTemporaryDirectory();
-    //   var path = '${tempDir.path}/flutter_sound.aac';
-    //   if (!isRecorderInit) {
-    //     return;
-    //   }
-    //   if (isRecording) {
-    //     await _soundRecorder!.stopRecorder();
-    //     sendFileMessage(File(path), MessageEnum.audio);
-    //   } else {
-    //     await _soundRecorder!.startRecorder(
-    //       toFile: path,
-    //     );
-    //   }
-    //   setState(() {
-    //     isRecording = !isRecording;
-    //   });
-    // }
     ref.read(chatControllerProvider).sendTextMessage(
           context,
           _messageController.text.trim(),
@@ -266,12 +237,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                 radius: 25,
                 child: GestureDetector(
                   child: Icon(
-                    // isShowSendbutton
-                    //     ? Icons.send
-                    //     : isRecording
-                    //         ? Icons.close
-                    //         : Icons.mic,
-                    // color: Colors.white,
+              
                     Icons.send,
                     color: Colors.white,
                   ),

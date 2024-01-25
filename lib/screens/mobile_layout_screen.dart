@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:chatos_messenger/features/auth/controller/auth_controller.dart';
 import 'package:chatos_messenger/features/chat/widgets/contact_list_group.dart';
 import 'package:chatos_messenger/features/groups/screens/create_group_screen.dart';
@@ -8,9 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:chatos_messenger/colors.dart';
 import 'package:chatos_messenger/features/chat/widgets/contacts_list.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../common/utils/utils.dart';
-import '../features/status/screens/confirm_status_screen.dart';
-import '../features/status/screens/status_contacts_screen.dart';
+
 
 class MobileLayoutScreen extends ConsumerStatefulWidget {
   const MobileLayoutScreen({Key? key}) : super(key: key);

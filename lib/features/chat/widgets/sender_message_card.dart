@@ -36,7 +36,7 @@ class SenderMessageCard extends ConsumerWidget {
     final isReplying = repliedText.isNotEmpty;
 
     return SwipeTo(
-      onRightSwipe: onRightSwipe,
+      onRightSwipe:(details)=> onRightSwipe,
       child: Align(
         alignment: Alignment.centerLeft,
         child: ConstrainedBox(

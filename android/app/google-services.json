@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:448412086169:android:9d9bbc1c2eed7d2e62ed08",
         "android_client_info": {
-          "package_name": "in.justin.chatos_messenger"
+          "package_name": "com.example.chatos_messenger"
         }
       },
       "oauth_client": [],

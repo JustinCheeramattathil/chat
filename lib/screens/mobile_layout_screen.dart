@@ -95,9 +95,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
             Tab(
               text: 'GROUPS',
             ),
-            // Tab(
-            //   text: 'STATUS',
-            // ),
+           
           ],
         ),
       ),
@@ -107,7 +105,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
         children: const [
           ContactsList(),
           ContactsListGroup(),
-          // StatusContactsScreen(),
+         
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -122,17 +120,7 @@ class _MobileLayoutScreenState extends ConsumerState<MobileLayoutScreen>
               ),
             );
           }
-          //  else
-          //   {
-          //   File? pickedImage = await pickImageFromGallery(context);
-          //   if (pickedImage != null) {
-          //     Navigator.pushNamed(
-          //       context,
-          //       ConfirmStatusScreen.routeName,
-          //       arguments: pickedImage,
-          //     );
-          //   }
-          // }
+       
         },
         backgroundColor: Colors.amber,
         child: const Icon(
